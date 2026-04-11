@@ -1,0 +1,1 @@
+I am copying from https://stackoverflow.com/questions/76013265/how-to-do-a-mongodb-6-single-node-replicaset-with-docker-compose
