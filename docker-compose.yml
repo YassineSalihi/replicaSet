@@ -19,7 +19,7 @@ services:
           exec docker-entrypoint.sh $$@
     command: "mongod --bind_ip_all --replSet rs0 --keyFile /mongo_keyfile"
     volumes:
-      - ./keyfile:/keyfi
+      - ./keyfile:/keyfile
   mongo2:
     image: mongo:6
     container_name: mongo2
@@ -40,10 +40,10 @@ services:
           exec docker-entrypoint.sh $$@
     command: "mongod --bind_ip_all --replSet rs0 --keyFile /mongo_keyfile"
     volumes:
-      - ./keyfile:/keyfi
+      - ./keyfile:/keyfile
   mongo3:
     image: mongo:6
-    container_name: mongo1
+    container_name: mongo3
     restart: always
     ports:
       - "27020:27017"
@@ -61,7 +61,7 @@ services:
           exec docker-entrypoint.sh $$@
     command: "mongod --bind_ip_all --replSet rs0 --keyFile /mongo_keyfile"
     volumes:
-      - ./keyfile:/keyfi
+      - ./keyfile:/keyfile
   mongo-setup:
     image: mongo:6
     container_name: mongo_setup
