@@ -62,6 +62,26 @@ services:
     command: "mongod --bind_ip_all --replSet rs0 --keyFile /mongo_keyfile"
     volumes:
       - ./keyfile:/keyfile
+
+  mongo-arb:
+    image: mongo:6
+    container_name: mongo_arb
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+    entrypoint:
+      - bash
+      - -c
+      - |
+          cp /keyfile /mongo_keyfile
+          chmod 400 /mongo_keyfile
+          chown 999:999 /mongo_keyfile
+          exec docker-entrypoint.sh $$@
+    command: "mongod --bind_ip_all --replSet rs0 --keyFile /mongo_keyfile"
+    volumes:
+      - ./keyfile:/keyfile
+      - ./data/arb:/data/db
   mongo-setup:
     image: mongo:6
     container_name: mongo_setup
