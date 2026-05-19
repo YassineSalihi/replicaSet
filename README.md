@@ -1,4 +1,4 @@
-# replicaSet
+# MongoDB Replica Set
 
 Docker-based MongoDB replica set for local development. It provisions three MongoDB nodes plus an arbiter and runs an initialization script to create the replica set and a sample user.
 
@@ -46,6 +46,7 @@ Docker-based MongoDB replica set for local development. It provisions three Mong
 - Default credentials are `root / secret` (admin database).
 - The initialization script creates an additional user `otheradmin` with password `othersecret`.
 - If you change container names, ports, or credentials, update `setup_mongo.sh` accordingly.
+- Security note: change the default credentials if you expose the ports beyond localhost or use this setup outside local development.
 
 ## Useful commands
 
